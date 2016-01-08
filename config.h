@@ -14,11 +14,12 @@ static const char selfgcolor[]      = "#eeeeee";
 static const unsigned int borderpx  = 1;        /* border pixel of windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const int showbar            = 1;        /* 0 means no bar */
-static const int topbar             = 1;        /* 0 means bottom bar */
+static const int topbar             = 0;        /* 0 means bottom bar */
 static const unsigned int gappx     = 12;        /* gap pixel between windows */
+static const unsigned int top_margin  = 40; /* margin at top of screen */
 
 /* tagging */
-static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
+static const char *tags[] = { "1", "2", "3", "4" };
 
 static const Rule rules[] = {
 	/* xprop(1):
@@ -27,7 +28,7 @@ static const Rule rules[] = {
 	 */
 	/* class      instance    title       tags mask     isfloating   monitor */
 	{ "Gimp",     NULL,       NULL,       0,            1,           -1 },
-	{ "Firefox",  NULL,       NULL,       1 << 8,       0,           -1 },
+	{ "Firefox",  NULL,       NULL,       1 << 3,       0,           -1 },
 };
 
 /* layout(s) */
@@ -60,6 +61,8 @@ static const char *termcmd[]  = { "terminator", NULL };
 static const char *rofiruncmd[] = { "rofi", "-show", "run", "-location", "6", NULL };
 static const char *rofiwindowcmd[] = { "rofi", "-show", "window", "-location", "6", NULL };
 static const char *rofisshcmd[] = { "rofi", "-show", "ssh", "-location", "6", NULL };
+static const char *volupcmd[] = { "amixer", "sset", "Master", "2+", NULL };
+static const char *voldowncmd[] = { "amixer", "sset", "Master", "2-", NULL };
 
 
 static Key keys[] = {
@@ -67,6 +70,8 @@ static Key keys[] = {
 	{ MODKEY,                       XK_p,      spawn,          {.v = rofiruncmd } },
 	{ MODKEY,                       XK_w,      spawn,          {.v = rofiwindowcmd } },
 	{ MODKEY,                       XK_s,      spawn,          {.v = rofisshcmd } },
+	{ MODKEY,                       XK_bracketright,  spawn,   {.v = volupcmd } },
+	{ MODKEY,                       XK_bracketleft,  spawn,    {.v = voldowncmd } },
 	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd } },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
@@ -93,11 +98,11 @@ static Key keys[] = {
 	TAGKEYS(                        XK_2,                      1)
 	TAGKEYS(                        XK_3,                      2)
 	TAGKEYS(                        XK_4,                      3)
-	TAGKEYS(                        XK_5,                      4)
-	TAGKEYS(                        XK_6,                      5)
-	TAGKEYS(                        XK_7,                      6)
-	TAGKEYS(                        XK_8,                      7)
-	TAGKEYS(                        XK_9,                      8)
+	//TAGKEYS(                        XK_5,                      4)
+	//TAGKEYS(                        XK_6,                      5)
+	//TAGKEYS(                        XK_7,                      6)
+	//TAGKEYS(                        XK_8,                      7)
+	//TAGKEYS(                        XK_9,                      8)
 	{ MODKEY|ShiftMask,             XK_q,      quit,           {0} },
 };
 

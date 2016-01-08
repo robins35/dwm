@@ -1949,9 +1949,9 @@ updategeom(void)
 					dirty = 1;
 					m->num = i;
 					m->mx = m->wx = unique[i].x_org;
-					m->my = m->wy = unique[i].y_org;
+					m->my = m->wy = unique[i].y_org + top_margin;
 					m->mw = m->ww = unique[i].width;
-					m->mh = m->wh = unique[i].height;
+					m->mh = m->wh = unique[i].height - top_margin;
 					updatebarpos(m);
 				}
 		} else {
