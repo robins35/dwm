@@ -2,7 +2,7 @@
 
 /* appearance */
 static const char *fonts[] = {
-	"monospace:size=10"
+  "Liberation Mono:pixelsize=12:antialias=true:autohint=true"
 };
 static const char dmenufont[]       = "monospace:size=10";
 static const char normbordercolor[] = "#444444";
@@ -27,8 +27,8 @@ static const Rule rules[] = {
 	 *	WM_NAME(STRING) = title
 	 */
 	/* class      instance    title       tags mask     isfloating   monitor */
-	{ "Gimp",     NULL,       NULL,       0,            1,           -1 },
-	{ "Firefox",  NULL,       NULL,       1 << 3,       0,           -1 },
+	{ "Gimp",     NULL,       NULL,       0,            1,           -1 }/*,
+	{ "Firefox",  NULL,       NULL,       1 << 3,       0,           -1 },*/
 };
 
 /* layout(s) */
